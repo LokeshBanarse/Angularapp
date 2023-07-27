@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-left rounded shadow py-5">   
+            <div class="row justify-content-center"> Login Form</div>    
+        <form (ngSubmit)="OnSubmit(myForm)" #myForm="ngForm">
+             <div class="form-group">
+                <label for="username">UserName</label>
+                <input type="text" class="form-control" id="username" [(ngModel)]="username" name="username" ngModel placeholder="Enter username" required>
+                <small *ngIf="username">User name is : {{username}}</small> 
+            </div> 
+
+             <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" #email="ngModel" id="email" name="email" ngModel placeholder="Enter email address" email required>
+                <small class="text-danger" *ngIf="email.touched && !email.valid">Please enter valid email</small>
+            </div>
+             
+             <div class="form-group">
+                <label for="course"> Select the course</label>
+                <select class="form-control" name="course" id="course" [ngModel]="defaultCourseValue">
+                    <option value="Angular">Angular</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="TypeScript">TypeScript</option>
+                </select>
+             </div>
+             <div ngModelGroup="address"> 
+                <div class="form-group">
+                  <label for="country">Country</label>
+                  <input placeholder="Enter country" class="form-control" type="text" ngModel name="country" required>
+                </div>    
+                <div class="form-group">
+                  <label for="state">State</label>
+                  <input placeholder="Enter State" class="form-control" type="text" ngModel name="state" required>
+                </div> 
+              </div>
+              
+              <div class="form-group">
+                <div *ngFor="let gender of genders" class="custom-control custom-radio">
+                     <input class="custom-control-input" type="radio" name="gender" id="{{gender.id}}" value="{{gender.value}}" ngModel>
+                      <label class="custom-control-label" for="{{gender.id}}">{{gender.value}}</label>
+                 </div>
+                                  
+              </div>
+          
+             
+              <button type="submit" class="btn btn-success mt-2">Submit</button>
+
+              <div class="row justify-content-center mt-2" *ngIf="isFormSubmitted">
+                <h2 class="text-center">Form Data</h2>
+                <p>UserName: <strong>{{formData.username}}</strong></p>
+                <p>Email: <strong>{{formData.email}}</strong></p>
+                <p>Course: <strong>{{formData.course}}</strong></p>
+                <p>Country: <strong>{{formData.country}}</strong></p>
+                <p>State: <strong>{{formData.state}}</strong></p>
+                <p>Gender: <strong>{{formData.gender}}</strong></p>
+              </div>
+        </form>
+
+    </div>
+
+    </div>
+
+</div>
+

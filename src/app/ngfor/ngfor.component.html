@@ -1,0 +1,52 @@
+<p>ngfor works!</p>
+
+<!-- <div *ngFor="let employee of employeeRecords">
+    {{employee.eName}}
+    {{employee.eCity}}
+    {{employee.Salary}}
+    <img width="50" height="50" [src]="employee.imgUrl" alt="">
+
+</div> -->
+
+
+<div>
+    {{title}}
+</div>
+
+<div>
+        <div>
+                 <table class="table">
+                    <thead>
+
+                        <tr>
+                                <th>
+                                   Title     
+                                </th>
+                                <th>
+                                        Director
+                                </th>
+                                <th>
+                                        Cast
+                                </th>
+
+                                <th>
+                                        Release Date
+                                </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr *ngFor="let movie of movies">
+
+                               <td> {{movie.title}}</td>
+                               <td> {{movie.director}}</td>
+                               <td> {{movie.cast}}</td>
+                               <td> {{movie.releaseDate}}</td>
+
+                        </tr>
+
+                     </tbody>
+                 </table>
+        </div>
+</div>
+
+<app-ngswitch></app-ngswitch>

@@ -22,11 +22,13 @@ export class SimpleformComponent implements OnInit {
     state: '',
     gender:''
    }
+  isFormSubmitted: boolean;
   constructor() { }
   
   ngOnInit() {
   }
   OnSubmit(form: NgForm) {
+    this.isFormSubmitted = true;
     console.log('form submitted', form);
     let email = form.value.email;
     console.log('Email is', email);
@@ -41,5 +43,14 @@ export class SimpleformComponent implements OnInit {
     this.formData.gender = form.value.gender;
     // reser the form controls
     form.reset();
+
+    // form.controls['course'].setValue('JavaScript');
+    // form.controls['email'].setValue('test@gmail.com');
+  
+    console.log(form.controls['address']); 
+    let objaddress = form.controls['address'];
+
+    console.log('after getting address form group', objaddress);
+   objaddress.controls['country'].patchValue('India');
   }
 }

@@ -50,7 +50,8 @@ export class SimpleformComponent implements OnInit {
     console.log(form.controls['address']); 
     let objaddress = form.controls['address'];
 
-    console.log('after getting address form group', objaddress);
-   objaddress.controls['country'].patchValue('India');
+  //   console.log('after getting address form group', objaddress);
+  //  objaddress.controls['country'].patchValue('India');
+
   }
 }

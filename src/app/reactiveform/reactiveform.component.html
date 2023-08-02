@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-left rounded shadow py-5">
+            <form [formGroup]="myForm" (ngSubmit)="OnSubmit()">
+                <div class="form-group">
+                    <label for="username">UserName</label>
+                    <input type="text" class="form-control" formControlName="username" placeholder="Please enter name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" formControlName="email" placeholder="Please enter email address">
+                </div>
+                <div class="form-group mt-2">
+                    <select formControlName="course" class="form-control" name="course" id="course" [ngModel]="defaultCourseValue">
+                        <option value="Angular">Angular</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="TypeScript">TypeScript</option>
+                     
+                    </select>
+                </div>
+                <button type="submit"  class="btn btn-success mt-2">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

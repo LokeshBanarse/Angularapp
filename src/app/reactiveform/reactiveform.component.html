@@ -5,9 +5,15 @@
                 <div formGroupName="userDetails">
                 <div class="form-group">
                     <label for="username">UserName</label>
-                    <input type="text" class="form-control" formControlName="username" placeholder="Please enter name">
-                    <small class="text-danger" *ngIf="!myForm.get('userDetails.username').valid && myForm.get('userDetails.username').touched">User name required *</small>
+                    <input type="text" class="form-control" formControlName="username" placeholder="Please enter name">   
+                    <small class="text-danger" *ngIf="!myForm.get('userDetails.username').valid && myForm.get('userDetails.username').touched">User name required *</small>   
+                    <small class="text-danger" *ngIf="!myForm.get('userDetails.username').valid && 
+                    myForm.get('userDetails.username').touched">
+                    <span class="text-danger" *ngIf="myForm.get('userDetails.username').errors['required']">User name required *</span>
+                    <span class="text-danger" *ngIf="myForm.get('userDetails.username').errors['namesIsNotAllowed']">That username is taken. Try another.</span>
+                </small>
                 </div>
+
                 <div class="form-group">
                     <label for="email">Email</label>
                    <input type="text" class="form-control" formControlName="email" placeholder="Please enter email address">
@@ -28,6 +34,16 @@
                         <input class="custom-control-input" type="radio" formControlName="gender" value="{{gender.value}}" id="{{gender.id}}">
                         <label for="{{gender.id}}">{{gender.value}}</label>
                     </div>
+                </div>
+                <div class="form-group" formArrayName="skills">
+                  <label>Skills</label> 
+                 <ng-container *ngFor="let skill of myForm.get('skills').controls">
+                 <input type="text" class="form-control" formControlName="{{i}}" placeholder="Add skills">
+                 
+                 <button class="btn btn-danger" (click)="onRemove(i)"> Remove </button>
+
+                </ng-container>  
+                 <button class="btn btn-light btn-sm mt-4 btn-add" (click)="OnAddSkills()"><i>+</i> Add Skills</button>        
                 </div>
                 <button type="submit"  class="btn btn-success mt-2">Submit</button>
                 <div class="row justify-content-center mt-2" *ngIf="isFormSubmitted">
